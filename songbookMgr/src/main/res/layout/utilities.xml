@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/app_background" >
+	<LinearLayout
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+    	android:orientation="vertical" >
+    	<TextView
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_alignParentLeft="true"
+        	android:background="@color/hilight_entry"
+        	android:gravity="left"
+        	android:layout_marginBottom="10dp" 
+        	android:text=" Main Songbook"
+        	android:textSize="20dp"
+        	android:textStyle="bold" />
+    	<LinearLayout
+    		android:layout_width="fill_parent"
+    		android:layout_height="fill_parent"
+    		android:orientation="vertical" >
+			<RelativeLayout 
+    			android:layout_width="fill_parent"
+    			android:layout_height="?android:attr/listPreferredItemHeight"
+    			android:padding="6dip" >
+    			<ImageButton
+        			android:id="@+id/import_btn"
+        			android:layout_width="wrap_content"
+        			android:layout_height="fill_parent"
+        			android:layout_alignParentBottom="true"
+        			android:layout_alignParentTop="true"
+        			android:layout_marginRight="6dip"
+        			android:src="@drawable/ic_file_import" />
+    			<TextView
+    	    		android:id="@+id/textView1"
+    	    		android:layout_width="wrap_content"
+    	    		android:layout_height="wrap_content"
+    	    		android:layout_centerVertical="true"
+    	    		android:layout_marginLeft="5dp"
+    	    		android:layout_toRightOf="@+id/import_btn"
+    	    		android:gravity="center_vertical|left"
+    	    		android:text="Import TKaraoke Songbook"
+    	    		android:textStyle="bold" />
+    			<TextView
+    	    		android:id="@+id/secondLine"
+    	    		android:layout_width="wrap_content"
+    	    		android:layout_height="20dip"
+    	    		android:layout_alignLeft="@+id/textView1"
+    	    		android:layout_alignParentBottom="true"
+    	    		android:ellipsize="marquee"
+    	    		android:singleLine="true"
+    	    		android:text="From media server or catalog file" />
+			</RelativeLayout>
+			<RelativeLayout 
+    			android:layout_width="fill_parent"
+    			android:layout_height="?android:attr/listPreferredItemHeight"
+    			android:padding="6dip" >
+    			<ImageButton
+        			android:id="@+id/restore_btn"
+        			android:layout_width="wrap_content"
+        			android:layout_height="fill_parent"
+        			android:layout_alignParentBottom="true"
+        			android:layout_alignParentTop="true"
+        			android:layout_marginRight="6dip"
+        			android:src="@drawable/ic_db_restore" />
+
+    			<TextView
+        			android:id="@+id/secondLine_2"
+        			android:layout_width="wrap_content"
+        			android:layout_height="26dip"
+        			android:layout_alignParentBottom="true"
+        			android:layout_alignParentRight="true"
+        			android:ellipsize="marquee"
+        			android:singleLine="true"
+        			android:text="" />
+    			<TextView
+    	    		android:id="@+id/textView1_2"
+    	    		android:layout_width="wrap_content"
+    	    		android:layout_height="wrap_content"
+    	    		android:layout_centerVertical="true"
+    	    		android:layout_marginLeft="5dp"
+    	    		android:layout_toRightOf="@+id/restore_btn"
+    	    		android:gravity="center_vertical|left"
+    	    		android:text="Restore Songbook DB"
+    	    		android:textStyle="bold" />
+
+			</RelativeLayout>
+			<RelativeLayout 
+    			android:layout_width="fill_parent"
+    			android:layout_height="?android:attr/listPreferredItemHeight"
+    			android:padding="6dip" >
+    			<ImageButton
+        			android:id="@+id/backup_btn"
+        			android:layout_width="wrap_content"
+        			android:layout_height="fill_parent"
+        			android:layout_alignParentBottom="true"
+        			android:layout_alignParentTop="true"
+        			android:layout_marginRight="6dip"
+        			android:src="@drawable/ic_db_backup" />
+    			<TextView
+        			android:id="@+id/secondLine_3"
+        			android:layout_width="wrap_content"
+        			android:layout_height="26dip"
+        			android:layout_alignParentBottom="true"
+        			android:layout_alignParentRight="true"
+        			android:ellipsize="marquee"
+        			android:singleLine="true"
+        			android:text="" />
+    			<TextView
+    	    		android:id="@+id/textView1_3"
+    	    		android:layout_width="wrap_content"
+    	    		android:layout_height="wrap_content"
+    	    		android:layout_alignTop="@+id/backup_btn"
+    	    		android:layout_marginLeft="5dp"
+    	    		android:layout_marginTop="15dp"
+    	    		android:layout_toRightOf="@+id/backup_btn"
+    	    		android:gravity="center_vertical|left"
+    	    		android:text="Backup Songbook DB"
+    	    		android:textStyle="bold" />
+			</RelativeLayout>
+	 	</LinearLayout>
+	 	<TextView
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_alignParentLeft="true"
+        	android:background="@color/hilight_entry"
+        	android:gravity="left"
+        	android:layout_marginBottom="10dp" 
+        	android:text=" Setup/Configuration"
+        	android:textSize="20dp"
+        	android:textStyle="bold" />
+    		<LinearLayout
+    			android:layout_width="fill_parent"
+    			android:layout_height="fill_parent"
+    			android:orientation="vertical" >
+				<RelativeLayout 
+    				android:layout_width="fill_parent"
+    				android:layout_height="?android:attr/listPreferredItemHeight"
+    				android:padding="6dip" >
+    				<ImageButton
+        				android:id="@+id/email_btn"
+        				android:layout_width="wrap_content"
+        				android:layout_height="fill_parent"
+        				android:layout_alignParentBottom="true"
+        				android:layout_alignParentTop="true"
+        				android:layout_marginRight="6dip"
+        				android:src="@drawable/ic_letter" />
+    				<TextView
+        				android:id="@+id/secondLine_4_1"
+        				android:layout_width="wrap_content"
+        				android:layout_height="26dip"
+        				android:layout_alignParentBottom="true"
+        				android:layout_alignParentRight="true"
+        				android:ellipsize="marquee"
+        				android:singleLine="true"
+        				android:text="" />
+    				<TextView
+    	    			android:id="@+id/textView1_4"
+    	    			android:layout_width="wrap_content"
+    	    			android:layout_height="wrap_content"
+    	    			android:layout_alignTop="@+id/email_btn"
+    	    			android:layout_marginLeft="5dp"
+    	    			android:layout_marginTop="15dp"
+    	    			android:layout_toRightOf="@+id/email_btn"
+    	    			android:gravity="center_vertical|left"
+    	    			android:text="Email Songbook DB"
+    	    			android:textStyle="bold" />
+				</RelativeLayout>
+    		    <RelativeLayout 
+    				android:layout_width="fill_parent"
+    				android:layout_height="?android:attr/listPreferredItemHeight"
+    				android:padding="6dip" >
+    				<ImageButton
+        				android:id="@+id/Configuration"
+        				android:layout_width="wrap_content"
+        				android:layout_height="fill_parent"
+        				android:layout_alignParentBottom="true"
+        				android:layout_alignParentTop="true"
+        				android:layout_marginRight="6dip"
+        				android:src="@drawable/ic_setup" />
+    				<TextView
+        				android:id="@+id/secondLine_4_2"
+        				android:layout_width="wrap_content"
+        				android:layout_height="26dip"
+        				android:layout_alignParentBottom="true"
+        				android:layout_alignParentRight="true"
+        				android:ellipsize="marquee"
+        				android:singleLine="true"
+        				android:text="" />
+    				<TextView
+    	    			android:id="@+id/textView1_4_1"
+    	    			android:layout_width="wrap_content"
+    	    			android:layout_height="wrap_content"
+    	    			android:layout_alignTop="@+id/Configuration"
+    	    			android:layout_marginLeft="5dp"
+    	    			android:layout_marginTop="15dp"
+    	    			android:layout_toRightOf="@+id/Configuration"
+    	    			android:gravity="center_vertical|left"
+    	    			android:text="SongbookMgr Configuration"
+    	    			android:textStyle="bold" />
+				</RelativeLayout>
+			</LinearLayout>
+	</LinearLayout> 	 	
+</ScrollView>

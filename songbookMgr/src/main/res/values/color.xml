@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFF</color>
+    <color name="l_blue">#909BAA</color>
+    <color name="d_blue">#6D7B92</color>
+    <color name="gray">#CCCCCC</color>
+    <color name="d_gray">#666</color>
+    <color name="black">#000</color>
+    <color name="app_background">#7DE5AF</color>
+    <color name="fav_selected_bg">#7D8FD8</color>
+    <color name="songid_background">#DC2F50</color>
+    <color name="songid_revtrack_background">#DC2FA0</color>
+    <color name="hilight_entry">#FFA135</color>
+    
+</resources>

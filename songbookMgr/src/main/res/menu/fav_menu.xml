@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/song_sort"
+        android:title="@string/song_sort"
+        android:icon="@drawable/ic_sort_ascending"
+        android:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/fav_multi_select"
+        android:title="@string/multi_selection"
+        android:icon="@drawable/ic_edit_select_all"
+        android:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/fav_restore"
+        android:title="@string/fav_dbrestore"
+        android:icon="@drawable/ic_db_restore"
+        android:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/fav_backup"
+        android:title="@string/favsongbookdb_backup"
+        android:icon="@drawable/ic_db_backup"
+        android:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/remove_favbook"
+        android:title="@string/remove_this_tab"
+        android:icon="@drawable/ic_page_remove"
+        android:showAsAction="ifRoom"
+        />
+</menu>

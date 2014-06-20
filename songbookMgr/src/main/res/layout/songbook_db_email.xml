@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    android:orientation="vertical" >
+    <TextView
+    	android:id="@+id/textview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:gravity="left"
+        android:text="Select songbook DB"
+        android:textSize="18dp" />
+    <RelativeLayout
+    	android:id="@+id/relativeLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp" >
+
+        <EditText
+            android:id="@+id/SongDBName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:layout_toLeftOf="@+id/DBBrowseButton"
+            android:inputType="text" />
+
+       	<Button
+         	android:id="@+id/DBBrowseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="Browse"
+            android:textSize="18dp" />
+   	</RelativeLayout>
+    <RelativeLayout
+    	android:id="@+id/relativeLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp" >
+        <TextView
+        	android:id="@+id/textview2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:gravity="left"
+            android:text="To:"
+            android:textSize="18dp" />
+
+    	<EditText
+    	    android:id="@+id/recipient"
+    	    android:layout_width="fill_parent"
+    	    android:layout_height="wrap_content"
+    	    android:layout_alignParentRight="true"
+    	    android:layout_marginTop="10dp"
+    	    android:layout_toRightOf="@+id/textview2"
+    	    android:ems="10"
+    	    android:inputType="textEmailAddress" />
+
+  	</RelativeLayout>
+    <RelativeLayout
+    	android:id="@+id/relativeLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp" >
+        <TextView
+      		android:id="@+id/textview3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:gravity="left"
+            android:text="Subject:"
+            android:textSize="18dp" />
+
+       	<EditText
+       	    android:id="@+id/subject"
+       	    android:layout_width="fill_parent"
+       	    android:layout_height="wrap_content"
+       	    android:layout_alignParentRight="true"
+       	    android:layout_marginTop="10dp"
+       	    android:layout_toRightOf="@+id/textview3"
+       	    android:ems="10"
+       	    android:inputType="text"
+       	    android:text="@string/email_subject" />
+
+  	</RelativeLayout>
+
+    <Button
+        android:id="@+id/SendEmail_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="Send"
+        android:textSize="18dp" />
+
+</LinearLayout>

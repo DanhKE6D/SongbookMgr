@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:enabled="false"
+android:orientation="horizontal">
+    <ImageButton
+        android:id="@+id/actionbar_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="2dip" android:paddingTop="2dip"
+        android:paddingEnd="2dip" android:paddingBottom="2dip"
+        android:src="@drawable/ic_songbookmgr"
+        android:onClick="onHomeClick"
+        android:adjustViewBounds="true" />
+    <ImageButton
+        android:id="@+id/actionbar_sound"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="2dip" android:paddingTop="2dip"
+        android:paddingEnd="2dip" android:paddingBottom="2dip"
+        android:src="@drawable/ic_sound"
+        android:onClick="onSoundClick" />
+    <ImageButton
+        android:id="@+id/actionbar_forward"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="2dip" android:paddingTop="2dip"
+        android:paddingEnd="2dip" android:paddingBottom="2dip"
+        android:src="@drawable/ic_media_skip_forward"
+        android:onClick="onForwardClick" />
+    <ImageButton
+        android:id="@+id/actionbar_rewind"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="2dip" android:paddingTop="2dip"
+        android:paddingEnd="2dip" android:paddingBottom="2dip"
+        android:src="@drawable/ic_media_skip_backward"
+        android:onClick="onRewindClick" />
+    <!-- android:background="@android:color/transparent"-->
+</LinearLayout>

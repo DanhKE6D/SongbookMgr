@@ -1,0 +1,4 @@
+include ':fileChooser'
+include ':quickAction'
+include ':songbookDBUtils'
+include ':songbookMgr'

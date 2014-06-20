@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_background"
+    android:orientation="vertical" >
+
+  <TextView
+      android:layout_width="219dp"
+      android:layout_height="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:layout_marginBottom="10dp"
+      android:layout_marginLeft="5dp"
+      android:layout_marginTop="10dp"
+      android:gravity="left"
+      android:text="Enter songbook DB name"
+      android:textSize="18dp" />
+
+          <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp" >
+
+            <EditText
+                android:id="@+id/SongBookDBName"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="5dp"
+                android:layout_toLeftOf="@+id/FileBrowseButton"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/FileBrowseButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:text="Browse"
+                android:textSize="18dp" />
+        </RelativeLayout>
+   <Button
+        android:id="@+id/BackupButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Backup"
+        android:textSize="18dp" />
+</LinearLayout>

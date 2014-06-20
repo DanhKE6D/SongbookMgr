@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ViewSwitcher xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/profileSwitcher"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/app_background">
+
+    <RelativeLayout
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent">
+
+        <ExpandableListView
+            android:id="@+id/lvExp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/app_background" />
+    </RelativeLayout>
+
+    <RelativeLayout  
+        android:layout_height="fill_parent"  
+        android:layout_width="fill_parent">  
+
+	    <ListView
+	        android:id="@+id/ListView1"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:background="@color/app_background" />
+
+	</RelativeLayout>
+
+</ViewSwitcher>

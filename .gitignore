@@ -1,0 +1,8 @@
+# ignore these file categories
+*~
+build/
+songbookDBUtils/build
+fileChooser/build
+quickAction/build
+songbookMgr/build
+songbookMgr.apk

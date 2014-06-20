@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/app_background" >
+	<LinearLayout
+    	android:layout_width="fill_parent"
+    	android:layout_height="fill_parent"
+     	android:orientation="vertical" >
+    	<TextView
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_alignParentLeft="true"
+        	android:background="@color/hilight_entry"
+        	android:gravity="left"
+        	android:layout_marginBottom="10dp" 
+        	android:text="Songbook Display Text Size"
+        	android:textSize="20dp"
+        	android:textStyle="bold" />
+    	<RelativeLayout
+        	android:layout_width="fill_parent"
+        	android:layout_height="166dp" >
+	    	<ListView
+	        	android:id="@+id/testListView"
+	        	android:layout_width="fill_parent"
+	        	android:layout_height="fill_parent"
+	        	android:background="@color/app_background" />
+		</RelativeLayout>
+        <RadioGroup
+            android:id="@+id/size_change_radio_group"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+            <RadioButton
+                android:id="@+id/song_text_size"
+                android:checked="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Song Name" />
+            <RadioButton
+                android:id="@+id/singer_text_size"
+                android:checked="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Singer Name" />
+        </RadioGroup>
+    	<SeekBar
+        	android:id="@+id/textsize_seekbar"
+        	android:layout_width="306dp"
+        	android:layout_height="wrap_content"
+        	android:layout_gravity="center_horizontal"
+        	android:layout_marginTop="10dp"
+            android:minHeight="40dp"
+            android:maxHeight="40dp"
+        	android:max="35"
+        	android:progress="0" />
+        <CheckBox
+            android:id="@+id/songid_5digit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Use 5 Digit Song ID" />
+    	<TextView
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_alignParentLeft="true"
+        	android:layout_marginTop="15dp"
+        	android:layout_marginBottom="10dp"        
+        	android:background="@color/hilight_entry"
+        	android:gravity="left"
+        	android:text="Remote Control Parameters"
+        	android:textSize="20dp"
+        	android:textStyle="bold" />   		
+
+    	<RelativeLayout
+    	    android:id="@+id/rl1"
+    	    android:layout_width="fill_parent"
+    	    android:layout_height="40dp" >
+
+    		<TextView
+    	    	android:id="@+id/tv1"
+    	    	android:layout_width="wrap_content"
+    	    	android:layout_height="wrap_content"
+    	    	android:layout_marginTop="18dp"
+    	    	android:layout_marginLeft="5dp"
+    	    	android:gravity="left"
+    	    	android:text="Media Server Address"
+    	    	android:textSize="18dp" />
+
+    		<EditText
+    	    	android:id="@+id/serveraddr"
+    	    	android:layout_width="88dp"
+    	    	android:layout_height="wrap_content"
+    	    	android:layout_alignParentBottom="true"
+    	    	android:layout_alignParentRight="true"
+    	    	android:layout_marginLeft="15dp"
+    	    	android:layout_toRightOf="@+id/tv1"
+    	    	android:ems="10"
+    	    	android:inputType="text"
+    	    	android:text="127.0.0.1" />
+   		</RelativeLayout>
+		<RelativeLayout
+    		android:id="@+id/rl2"
+        	android:layout_width="fill_parent"
+        	android:layout_height="48dp" >
+    		<TextView
+    	    	android:id="@+id/tv2"
+    	    	android:layout_width="wrap_content"
+    	    	android:layout_height="wrap_content"
+    	    	android:layout_marginLeft="5dp"
+    	    	android:layout_marginTop="16dp"
+    	    	android:gravity="left"
+    	    	android:text="Server Port"
+    	    	android:textSize="18dp" />
+    		<EditText
+    	    	android:id="@+id/serverportno"
+    	    	android:layout_width="88dp"
+    	    	android:layout_height="wrap_content"
+    	    	android:layout_alignParentBottom="true"
+    	    	android:layout_alignParentRight="true"
+    	    	android:layout_marginLeft="15dp"
+    	    	android:layout_toRightOf="@+id/tv2"
+    	    	android:ems="10"
+    	    	android:inputType="numberDecimal"/>
+   		</RelativeLayout>
+   		<RelativeLayout
+    		android:id="@+id/rl3"
+        	android:layout_width="fill_parent"
+        	android:layout_height="48dp" >
+    		<TextView
+    	    	android:id="@+id/tv3"
+    	    	android:layout_width="wrap_content"
+    	    	android:layout_height="wrap_content"
+    	    	android:layout_marginLeft="5dp"
+    	    	android:layout_marginTop="16dp"
+    	    	android:gravity="left"
+    	    	android:text="User name"
+    	    	android:textSize="18dp" />
+    		<EditText
+    	    	android:id="@+id/username"
+    	    	android:layout_width="88dp"
+    	    	android:layout_height="wrap_content"
+    	    	android:layout_alignParentBottom="true"
+    	    	android:layout_alignParentRight="true"
+    	    	android:layout_marginLeft="15dp"
+    	    	android:layout_toRightOf="@+id/tv3"
+    	    	android:ems="10"
+    	    	android:inputType="text"/>
+   		</RelativeLayout>
+   		<RelativeLayout
+    		android:id="@+id/rl4"
+        	android:layout_width="fill_parent"
+        	android:layout_height="48dp" >
+    		<TextView
+    	    	android:id="@+id/tv4"
+    	    	android:layout_width="wrap_content"
+    	    	android:layout_height="wrap_content"
+    	    	android:layout_marginLeft="5dp"
+    	    	android:layout_marginTop="16dp"
+    	    	android:gravity="left"
+    	    	android:text="Password"
+    	    	android:textSize="18dp" />
+    		<EditText
+    	    	android:id="@+id/password"
+    	    	android:layout_width="88dp"
+    	    	android:layout_height="wrap_content"
+    	    	android:layout_alignParentBottom="true"
+    	    	android:layout_alignParentRight="true"
+    	    	android:layout_marginLeft="15dp"
+    	    	android:layout_toRightOf="@+id/tv4"
+    	    	android:ems="10"
+    	    	android:inputType="textPassword" />
+   		</RelativeLayout>
+    	<CheckBox
+    		android:id="@+id/remoteenable"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+    		android:text="Enable Remote Control" />
+        <CheckBox
+            android:id="@+id/use_vnc_server"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Use VNC Server to send Song ID" />
+        <CheckBox
+            android:id="@+id/checkforconnection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Checking server for Connectivity" />
+   		<Button
+   			android:id="@+id/savecfg"
+   	   		android:layout_width="wrap_content"
+   	   		android:layout_height="wrap_content"
+   	   		android:layout_gravity="center_horizontal"
+   	   		android:text="Save Configuration" />  		
+ 	</LinearLayout>  
+</ScrollView>

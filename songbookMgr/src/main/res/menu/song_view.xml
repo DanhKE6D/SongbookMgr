@@ -1,0 +1,43 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+	<item
+        android:id="@+id/song_sort"
+        android:title="@string/song_sort"
+        android:icon="@drawable/ic_sort_ascending"
+        android:showAsAction="ifRoom"        
+        />
+    
+    <item 
+        android:id="@+id/singer_sort"
+        android:title="@string/singer_sort"
+        android:icon="@drawable/ic_people_sort_ascending"
+        android:showAsAction="ifRoom"      
+        />
+    
+    <item 
+        android:id="@+id/search"
+        android:title="@string/search"
+        android:icon="@drawable/ic_old_edit_find"
+        android:showAsAction="ifRoom|collapseActionView"
+        android:actionLayout="@layout/search_param"         
+        />
+    <item
+        android:id="@+id/multi_select"
+        android:title="@string/multi_selection"
+        android:icon="@drawable/ic_edit_select_all"
+        android:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/songbook_info"
+        android:title="@string/db_info"
+        android:icon="@drawable/ic_get_info"
+        android:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/new_favsongbook"
+        android:title="@string/create_newfabsongbook"
+        android:icon="@drawable/ic_document_new"
+        android:showAsAction="ifRoom"
+        />
+
+</menu>

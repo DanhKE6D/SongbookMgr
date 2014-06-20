@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dql.songbookmgr"
+    android:versionCode="209"
+    android:versionName="1.2.09" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="17" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:icon="@drawable/ic_songbookmgr"
+        android:theme="@style/AppTheme">
+
+    <activity
+        android:name="com.dql.songbookmgr.SongbookMgrActivity"
+        android:label="@string/app_name">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+    <activity
+        android:name="com.dql.filechooser.FileChooser">
+    </activity>
+    <activity
+        android:name="com.dql.songbookmgr.SongIndexConfigActivity">
+    </activity>
+     <activity
+        android:name="com.dql.songbookmgr.SongbookImportActivity"
+        android:label="@string/songbook_import">
+    </activity>
+    <activity
+        android:name="com.dql.songbookmgr.SendDBViaEmailActivity"
+        android:label="@string/email_db">
+    </activity>
+            <activity
+        android:name="com.dql.songbookmgr.FavSongbookDBBackupActivity">
+    </activity>
+    <activity
+        android:name="com.dql.songbookmgr.FavSongbookDBRestoreActivity"
+        android:label="@string/fav_dbrestore">
+    </activity>
+    <activity
+        android:name="com.dql.songbookmgr.SongbookDBBackupActivity">
+    </activity>
+    <activity
+        android:name="com.dql.songbookmgr.SongbookDBRestoreActivity">
+    </activity>
+   </application>
+
+</manifest>

@@ -57,7 +57,7 @@
     <string name="skip_fwd">Forward</string>
     <string name="skip_bwd">Rewind</string>
     <string name="db_info">Songbook Info</string>
-    <string name="build_date">2014/05/25</string>
+    <string name="build_date">2014/06/22</string>
     <string name="author">Danh Le, DanhKE6D@gmail.com</string>
     <string name="import_general_info">Before SongbookMgr can operate with TKaraoke Player, a songbook catalog
         must be imported into SongbookMgr. There are two ways to import the

@@ -150,10 +150,10 @@ public class SongbookLayout extends Fragment implements
         // make the original songlist sorted in ascending order
         Collections.sort(songList);
         songSortAscendingOrder = !songSortAscendingOrder;
-        originalSongList = new ArrayList<SongID>();
-        for (SongID s : songList) {
-            originalSongList.add(s);
-        }
+        originalSongList = new ArrayList<SongID>(songList);
+        //for (SongID s : songList) {
+        //    originalSongList.add(s);
+        //}
         setupExpandableSonglist();
         redefineListAdapter();
         if (progressDialog != null) {
@@ -862,6 +862,8 @@ public class SongbookLayout extends Fragment implements
                     // was in expanded display mode
                     expDisplayMode = false;
                     switcher.showNext();
+                    // 20141025: dql - want to start search with full list of songs
+                    songList = new ArrayList<SongID>(originalSongList);
                     redefineListAdapter();
                 }
                 item.setActionView(R.layout.search_param);

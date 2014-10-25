@@ -188,7 +188,7 @@ public class SongbookMgrActivity extends FragmentActivity implements
 
         // we should also read all the FavBooks DB names
 	    readConfigFromSharePreferences();
-        this.setRequestedOrientation(this.getResources().getConfiguration().orientation);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
 
 		//setContentView(R.layout.activity_songbook_mgr);
 	    //setUpView();
@@ -716,6 +716,7 @@ public class SongbookMgrActivity extends FragmentActivity implements
                         songCmd = String.format("1%05d", s.getID());
                     else
                         songCmd = String.format("1%04d", s.getID());
+                    Log.i(TAG, "AddToPlaylist: Song Name = " + s.getName() + ", ID = " + s.getID());
                     sendTask.send(songCmd);
                     Toast.makeText(SongbookMgrActivity.this, s.getName() + " added to playlist", Toast.LENGTH_SHORT).show();
                 }

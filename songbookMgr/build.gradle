@@ -8,6 +8,13 @@ android {
         minSdkVersion 14
         targetSdkVersion 17
     }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
     signingConfigs {
 
         release {
@@ -28,5 +35,5 @@ dependencies {
     compile project(':quickAction')
     compile project(':songbookDBUtils')
     compile project(':fileChooser')
-    compile 'com.android.support:support-v4:+'
+    compile 'com.android.support:support-v4:19+'
 }

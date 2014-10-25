@@ -71,3 +71,6 @@
       - Change forward/backward icon position so that low res screen has the forward button
         available
       - Add filterable to songlist search
+  2014/10/25: v1.2.10
+      - Want to start search with a full song list
+

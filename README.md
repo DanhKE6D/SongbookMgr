@@ -1,0 +1,81 @@
+SongbookMgr
+===========
+
+Songbook Manager for TKaraoke Software
+
+/*
+*****************************************************************************
+**
+** Change log for SongbookMgr application
+** Danh Le
+** DanhKE6D@gmail.com
+**
+*****************************************************************************
+*/
+2013/09/29: v1.0.16 -- sent for beta test
+    - Add support for TKaraoke Pro -- 5 digit song ID
+    - Better handling during songbook import
+    - Fix the dialog box that notifies invalid file format
+    - Correctly add the song to the favorite book if the song is the same but sung by
+      different singers
+2013/09/30: v1.0.17
+    - Changed icons for media from grayed out to black
+    - Sorting long list may cause ANR
+    - Limit the singer names to max of 30 chars (otherwise it would mess up the
+                                                display)
+2013/10/03: v1.0.20
+    - Sorting now performed from asyncTask to prevent ANR
+    - Put the sound, ff, rwnd icons on the action bar to help with faster access
+    - New search function:
+        |a    Search for songs begin with 'A' or 'a' inclusively
+        |a-b  Search for songs that begin with 'A' or 'a' to 'B' or 'b' inclusively.
+        |a-   Search for songs that begin with 'A' or 'a' to the end of the list
+        |-a   Search for songs from the beginning of the list to 'A' or 'a' inclusively.
+    - Press the SongbookMgr icon in the main songbook display will display the full
+      songbook in ascending sort order.
+    - Enable searching with diacritics removed from main songlist (Vietnamese language)
+      to enable search to match all Vietnamese token from English search text.
+ 2013/10/04: v1.0.21
+    - Rearrange the most used icons to the main activity (home, sound, fast forward, rewind)
+    - Remove these icons from quick action menus
+    - Remove left over delimiters during file import
+    - Install default songlist db that has Vietnamese language
+ 2013/10/05: v1.0.22 -- release to market
+    - Eliminate repeat ' ' chars in search string
+
+ 2013/10/25: v1.0.23
+    - Improve tcp error handling. Now will timeout in 40s max (vs 1 min), notify the user
+      of the communication error, then empty the command queue.
+    - Improve custom song entry list. The user now can set the text size of the song
+      independent of the singer name
+    - Pressing the home button now will also go back to home page.
+ 2013/11/12: v1.1.21
+    - Fixing a bug that would crash if v1.1.xx is installed on top of v1.0.xx. The bug
+      is related to SharedPreferences int/boolean key remoteEnable.
+ 2013/11/22: v1.1.22
+    - Improve DB performance during file import. Previously, a 8000 songbook catalog
+      would take 150 seconds to load. It only takes < 10 seconds now.
+    - Add a menu option on the main songbook to show how many songs are in the collection
+    - Put the forward button back into the quickaction menu because some phone can not
+      display all 4 permanent icons in the actionbar menu.
+ 2013/12/19: v1.2.00
+    - Remove VNC server support in favor of sbConnectionMgr server. With sbConnectionMgr
+      server (same server that runs with VLC), TKaraoke songbook now can be imported
+      directly into SongbookMgr. Songbook catalog still has to be generated from TKaraoke
+      software, then the filename is registered with sbConnectionMgr (one time setup)
+    - Add the ability to check for server connection during network setup
+ 2014/01/31: v1.2.08
+      - Add expandable songbook heading based on song name
+      - Add a note in a help file to show the user how to fix screen flickering when using with
+        vnc
+      - VNC server can now be used together with sbConnectionMgr as song ID key generator. If VNC
+        server is used, sbConnectionMgr server is then used primarily to export songbook catalog
+        to the mobile device.
+  2014/05/25: v1.2.09
+      - Fix initial display of VNC port number
+      - Change forward/backward icon position so that low res screen has the forward button
+        available
+      - Add filterable to songlist search
+  2014/10/25: v1.2.10
+      - Want to start search with a full song list
+

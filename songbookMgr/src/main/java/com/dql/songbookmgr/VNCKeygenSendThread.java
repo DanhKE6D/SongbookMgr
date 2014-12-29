@@ -1,48 +1,20 @@
 package com.dql.songbookmgr;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.util.Log;
-
 import com.dql.dbutil.SongbookCfg;
-
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+
 
 /**
  * Created by dql on 1/31/14.
  */
 public class VNCKeygenSendThread extends KeygenSendThread {
+    static final String TAG = "VNCKeygenSendThread";
     // VNC protocol connection
     RfbProto rfb = null;
-    static final String TAG = "VNCKeygenSendThread";
-    Activity myCtx = null;
-    boolean keygenThreadStopping = false;            // set to true in destroy to let the task die
-    // This ConcurrentLinked queue is used to hold all the vnc commands that
-    // needed to send to vnc server.
-    Queue<String> cmdQueue = new ConcurrentLinkedQueue<String>();
 
-    @Override
-    public void setContext(Activity ctx) {
-        this.myCtx = ctx;
-    }
-
-    @Override
-    public void send(String cmd) {
-        cmdQueue.add(cmd);
-    }
-
-    @Override
-    public void stopSendThread() {
-        keygenThreadStopping = true;
-    }
     // **********************************
     // Public methods
     // **********************************
@@ -82,7 +54,6 @@ public class VNCKeygenSendThread extends KeygenSendThread {
                                         .setMessage("Unable to communicate with VNC server")
                                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                             public void onClick(DialogInterface dialog, int which) {
-
                                                 dialog.dismiss();
                                             }
                                         })
@@ -103,10 +74,8 @@ public class VNCKeygenSendThread extends KeygenSendThread {
                         if (cmd != null) {
                             // send it
                             Log.i(TAG, "Got a command, cmd = " + cmd);
-
                             // The command for TKaraoke either starts out with a 1NNNN for selecting songs
                             // or a ctrl_ for keyboard shortcut
-
                             Log.i(TAG, "VNCSendTask: Sending " + cmd);
                             if (cmd.startsWith("1")) {
                                 // a song select command
@@ -125,10 +94,9 @@ public class VNCKeygenSendThread extends KeygenSendThread {
                     }
                     if ((rfb != null) && SongbookCfg.getInstance().remoteEnable()) {
                         rfb.close();
+                        rfb = null;
                     }
-
                 }
-
             }
             catch (InterruptedException e) {
                 e.printStackTrace();
@@ -136,7 +104,11 @@ public class VNCKeygenSendThread extends KeygenSendThread {
             }
         }
         Log.i(TAG, "VNCSendTask: Stopping");
+        if (rfb != null) {
+            rfb.close();
+        }
     }
+
     synchronized RfbProto connectToVNCServer(String us,String pw) throws Exception {
         Log.i(TAG, "Connecting to " + SongbookCfg.getInstance().getServerName() + ", port " + SongbookCfg.getInstance().getServerPortNumber() + "...");
 

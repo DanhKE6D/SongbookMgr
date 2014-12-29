@@ -1,49 +1,22 @@
 package com.dql.songbookmgr;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.util.Log;
-
 import com.dql.dbutil.SongbookCfg;
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * Created by dql on 1/31/14.
  */
 public class SBCMKeygenSendThread extends KeygenSendThread {
-    // SBCM protocol connection
-
     static final String TAG = "SBCMKeygenSendThread";
-    Activity myCtx = null;
-    boolean keygenThreadStopping = false;            // set to true in destroy to let the task die
-    // This ConcurrentLinked queue is used to hold all the SBCM commands that
-    // needed to send to SBCM server.
-    Queue<String> cmdQueue = new ConcurrentLinkedQueue<String>();
 
-    @Override
-    public void setContext(Activity ctx) {
-        this.myCtx = ctx;
-    }
-
-    @Override
-    public void send(String cmd) {
-        cmdQueue.add(cmd);
-    }
-
-    @Override
-    public void stopSendThread() {
-        keygenThreadStopping = true;
-    }
     // **********************************
     // Public methods
     // **********************************
@@ -79,7 +52,8 @@ public class SBCMKeygenSendThread extends KeygenSendThread {
                             inFromServer = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                             outToServer.writeBytes("SELECT" + cmd + '\n');
                             response = inFromServer.readLine();
-                        } catch (IOException e) {
+                        }
+                        catch (IOException e) {
                             // clear the queue -- no point of going forward
                             cmdQueue.clear();
                             myCtx.runOnUiThread(new Runnable() {
@@ -100,16 +74,24 @@ public class SBCMKeygenSendThread extends KeygenSendThread {
                             });
                             Log.e(TAG,"Exception raised - connection failed!");
                             e.printStackTrace();
-                            continue;
+                        }
+                        finally {
+                            try {
+                                clientSocket.close();
+                                clientSocket = null;
+                            }
+                            catch (IOException ioe) {
+                                Log.e(TAG,"Exception raised - unable to close socket!");
+                            }
                         }
                         // need to slow down or the last one will take over the rest
                         if (nCmdSize > 1) {
-                            // Tkaraoke is really slow. No need to sleep 2 seconds on the last command
+                            // simulate human keyboard input to TKaraoke. If there is more than one cmd, sleep 2 seconds before
+                            // pushing another command
                             Thread.sleep(2000);
                         }
                     }
                 }
-
             }
             catch (InterruptedException e) {
                 e.printStackTrace();
@@ -117,6 +99,13 @@ public class SBCMKeygenSendThread extends KeygenSendThread {
             }
         }
         Log.i(TAG, "SBCMKeygenSendThread: Stopping");
+        if (clientSocket != null) {
+            try {
+                clientSocket.close();
+            } catch (IOException ioe) {
+                Log.e(TAG, "Exception raised - unable to close socket!");
+            }
+        }
     }
 }
 

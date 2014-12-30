@@ -25,8 +25,11 @@ public abstract class KeygenSendThread extends Thread {
     public void setContext(Activity ctx) {
         this.myCtx = ctx;
     }
+
     public void send(String cmd) {
-        cmdQueue.add(cmd);
+        synchronized (this) {
+            cmdQueue.add(cmd);
+        }
     }
 
     public void stopSendThread() {

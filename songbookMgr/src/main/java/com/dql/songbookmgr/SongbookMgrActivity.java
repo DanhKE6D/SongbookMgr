@@ -96,7 +96,7 @@ public class SongbookMgrActivity extends FragmentActivity implements
 	TabsAdapter mTabsAdapter;
 
     private enum FragmentLayoutType {
-        FragUtils, FragPlaylist, FragMainSongbook, FragFavoriteSongbook
+        FragUtils, FragManualEntry, FragMainSongbook, FragFavoriteSongbook
     };
 
     class TabListInfo {
@@ -188,7 +188,7 @@ public class SongbookMgrActivity extends FragmentActivity implements
 
         // we should also read all the FavBooks DB names
 	    readConfigFromSharePreferences();
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LOCKED);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
 		//setContentView(R.layout.activity_songbook_mgr);
 	    //setUpView();
@@ -215,7 +215,7 @@ public class SongbookMgrActivity extends FragmentActivity implements
         bar.setCustomView(actionBarLayout);
 
         fragmentTabList.add(new TabListInfo(FragmentLayoutType.FragUtils, UtilsLayout.class, "UTILITIES", 0));
-        fragmentTabList.add(new TabListInfo(FragmentLayoutType.FragPlaylist, PlaylistLayout.class, "PLAYLIST", LOADER_PLAYLIST));
+        fragmentTabList.add(new TabListInfo(FragmentLayoutType.FragManualEntry, ManualEntryLayout.class, "MANUAL ENTRY", 0));
         fragmentTabList.add(new TabListInfo(FragmentLayoutType.FragMainSongbook, SongbookLayout.class, "SONGBOOK", LOAD_SONGBOOK));
         if (favDBNames.size() > 0) {
             bookNumber = 1;
@@ -251,7 +251,7 @@ public class SongbookMgrActivity extends FragmentActivity implements
             bar.setSelectedNavigationItem(savedInstanceState.getInt("tab", 0));
         }
         // start the keygen send task for the first time
-        sendTask = (new KeygenSendThreadFactory()).createKeygenSendThread(cfg.getMediaServerType());
+        sendTask = KeygenSendThreadFactory.createKeygenSendThread(cfg.getMediaServerType());
         sendTask.setContext(SongbookMgrActivity.this);
         sendTask.start();
 	}
@@ -1012,7 +1012,7 @@ public class SongbookMgrActivity extends FragmentActivity implements
                         // need to stop the current send thread before starting a different one
                         sendTask.stopSendThread();
                         // should wait a bit before starting new one?
-                        sendTask = (new KeygenSendThreadFactory()).createKeygenSendThread(cfg.getMediaServerType());
+                        sendTask = KeygenSendThreadFactory.createKeygenSendThread(cfg.getMediaServerType());
                         sendTask.setContext(SongbookMgrActivity.this);
                         sendTask.start();
                     }

@@ -6,18 +6,22 @@
     android:orientation="vertical" >
 
     <TextView
+        android:id="@+id/songid_display"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:layout_alignParentLeft="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="2dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="2dp"
         android:gravity="center"
         android:text="12345"
         android:textSize="50dp" />
-
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
     <GridLayout
         android:id="@+id/GridLayout1"
         android:layout_width="wrap_content"
@@ -25,75 +29,84 @@
         android:columnCount="3"
         android:rowCount="4"
         android:orientation="horizontal"
-        android:layout_marginLeft="60dp">
+        android:layout_gravity="center_horizontal">
         <Button
             android:id="@+id/button1"
             android:layout_gravity="left|top"
             android:text="1"
-            android:textSize="40dp" />
+            android:textSize="35dp" />
 
         <Button
             android:id="@+id/button2"
             android:layout_gravity="left|top"
             android:text="2"
-            android:textSize="40dp" />
+            android:textSize="35dp" />
 
         <Button
             android:id="@+id/button3"
             android:layout_gravity="left|top"
             android:text="3"
-            android:textSize="40dp" />
+            android:textSize="35dp" />
 
         <Button
             android:id="@+id/button4"
             android:layout_gravity="left|top"
             android:text="4"
-            android:textSize="40dp" />
+            android:textSize="35dp" />
         <Button
             android:id="@+id/button5"
             android:layout_gravity="left|top"
             android:text="5"
-            android:textSize="40dp" />
+            android:textSize="35dp" />
 
         <Button
             android:id="@+id/button6"
             android:layout_gravity="left|top"
             android:text="6"
-            android:textSize="40dp" />
+            android:textSize="35dp" />
 
         <Button
             android:id="@+id/button7"
             android:layout_gravity="left|top"
             android:text="7"
-            android:textSize="40dp" />
+            android:textSize="35dp" />
 
         <Button
             android:id="@+id/button8"
             android:layout_gravity="left|top"
             android:text="8"
-            android:textSize="40dp" />
+            android:textSize="35dp" />
         <Button
             android:id="@+id/button9"
             android:layout_gravity="left|top"
             android:text="9"
-            android:textSize="40dp" />
+            android:textSize="35dp" />
 
         <Button
             android:id="@+id/button0"
             android:layout_gravity="left|top"
             android:text="0"
-            android:textSize="40dp" />
+            android:textSize="35dp" />
 
         <Button
             android:id="@+id/buttonback"
             android:layout_gravity="left|top"
-            android:text=""
-            android:textSize="40dp" />
-
+            android:text="\u003c"
+            android:textSize="35dp" />
         <Button
-            android:id="@+id/buttonenter"
+            android:id="@+id/buttonclear"
             android:layout_gravity="left|top"
-            android:text="Send"
-            android:textSize="40dp" />
+            android:text="C"
+            android:textSize="35dp" />
+
     </GridLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:id="@+id/buttonsend"
+        android:layout_gravity="center_horizontal"
+        android:text="Send"
+        android:textSize="40dp" />
+    </LinearLayout>
 </LinearLayout>

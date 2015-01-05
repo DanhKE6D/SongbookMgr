@@ -78,4 +78,6 @@ Songbook Manager for TKaraoke Software
       - Add filterable to songlist search
   2014/10/25: v1.2.10
       - Want to start search with a full song list
+  2015/01/04: v1.2.11
+      - Add manual entry to let the user to send the song ID directly from keypad
 

@@ -829,6 +829,17 @@ public class SongbookMgrActivity extends FragmentActivity implements
 
     }
 
+    public void sendSongIDManually(int songID) {
+        boolean longFmtSongID = SongbookCfg.getInstance().longFormatSongID();
+        String songCmd;
+        if (longFmtSongID)
+            songCmd = String.format("1%05d", songID);
+        else
+            songCmd = String.format("1%04d", songID);
+        sendTask.send(songCmd);
+        Toast.makeText(SongbookMgrActivity.this, songID + " added to playlist", Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     public void onSongSelected(String fragmentTag, SongID song) {
         // make sure we get the latest parameters

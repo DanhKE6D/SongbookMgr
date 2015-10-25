@@ -74,3 +74,8 @@
   2014/10/25: v1.2.10
       - Want to start search with a full song list
 
+  2015/01/24: v1.2.11
+      - Add manual entry
+  2015/10/24: v1.2.12
+      - fix a bug with sending out wrong song ID when selected during search
+

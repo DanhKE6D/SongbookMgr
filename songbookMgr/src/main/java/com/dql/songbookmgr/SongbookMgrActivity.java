@@ -95,9 +95,12 @@ public class SongbookMgrActivity extends FragmentActivity implements
 	ViewPager mViewPager;
 	TabsAdapter mTabsAdapter;
 
+    boolean inSearchEditMode = false;
+    String editClientTag = null;
+
     private enum FragmentLayoutType {
         FragUtils, FragManualEntry, FragMainSongbook, FragFavoriteSongbook
-    };
+    }
 
     class TabListInfo {
         FragmentLayoutType type;
@@ -255,6 +258,11 @@ public class SongbookMgrActivity extends FragmentActivity implements
         sendTask.setContext(SongbookMgrActivity.this);
         sendTask.start();
 	}
+
+    public void registerBackkeyPress(final String clientTag) {
+        inSearchEditMode = true;
+        editClientTag = clientTag;
+    }
 
     public void onHomeClick( View view ) {
         // onClick code goes here.
@@ -866,28 +874,36 @@ public class SongbookMgrActivity extends FragmentActivity implements
         //Handle the back button
 
         if (keyCode == KeyEvent.KEYCODE_BACK && isTaskRoot()) {
-            //Ask the user if they want to quit
-            new AlertDialog.Builder(this)
-                    .setIcon(R.drawable.ic_alert)
-                    .setTitle("SongbookMgr")
-                    .setMessage("Do you really want to quit?")
-                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            // Unlock screen rotation and stop the activity
-                            //saveFavSongboksTabInfoToSharePref();
-                            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
-                            finish();
-                        }
-                    })
-                    .setNegativeButton("No", null)
-                    .show();
-            return true;
+            if (inSearchEditMode) {
+                // tell songbook layout to close the edit box
+                inSearchEditMode = false;
+                SongbookLayout fsl = (SongbookLayout) getSupportFragmentManager().findFragmentByTag(editClientTag);
+                if (fsl != null)
+                    fsl.notifyBackkeyPress();
+                editClientTag = null;
+            }
+            else {
+                //Ask the user if they want to quit
+                new AlertDialog.Builder(this)
+                        .setIcon(R.drawable.ic_alert)
+                        .setTitle("SongbookMgr")
+                        .setMessage("Do you really want to quit?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Unlock screen rotation and stop the activity
+                                //saveFavSongboksTabInfoToSharePref();
+                                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+                return true;
 
+            }
+            return false;
         }
-        else {
-            return super.onKeyDown(keyCode, event);
-        }
-
+        return super.onKeyDown(keyCode, event);
     }
 
 

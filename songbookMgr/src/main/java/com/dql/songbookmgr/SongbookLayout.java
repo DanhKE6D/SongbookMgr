@@ -1,7 +1,6 @@
 package com.dql.songbookmgr;
 
 import java.io.IOException;
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -43,7 +42,6 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -80,19 +78,21 @@ public class SongbookLayout extends Fragment implements
 
 	private enum ListSearchMode {
 	    None, Songs, Singers
-	};
+	}
 
 	public enum SelectedSongCmd {
 	    AddToFav, AddToPlaylist, PlaybackPause, SkipForward, StartOnAltTrack
-	};
+	}
 
     public enum SongbookCmd {
         NewFavoriteBook
-    };
+    }
 
     public enum SongSelectedListener_CmdStatus {
         CmdStatus_OK, CmdStatus_Failed, CmdStatus_BookNotExist
-    };
+    }
+
+
 
     private static final int ADD_TO_FAVORITE = 0;
 	//private static final int TOGGLE_SOUND    = 1;
@@ -103,10 +103,20 @@ public class SongbookLayout extends Fragment implements
 	private static final int START_ON_ALTRACK = 4;
 
     public interface OnSongSelectedListener {
-        public SongSelectedListener_CmdStatus onSongSelected(ArrayList<SongID> songList, SelectedSongCmd cmd);
+        SongSelectedListener_CmdStatus onSongSelected(ArrayList<SongID> songList, SelectedSongCmd cmd);
     }
     public interface OnSongbookCmdListener {
-        public void onSongbookCmd(SongbookCmd cmd);
+        void onSongbookCmd(SongbookCmd cmd);
+    }
+
+    public void notifyBackkeyPress() {
+        // in edit mode and the user press back
+
+        if (optionMenuItem != null) {
+            if (optionMenuItem.getItemId() ==  R.id.search) {
+                optionMenuItem.collapseActionView();
+            }
+        }
     }
 
     public void updateSongbook() {
@@ -120,6 +130,11 @@ public class SongbookLayout extends Fragment implements
         if (!expDisplayMode) {
             expDisplayMode = true;      // force expandable view
             switcher.showPrevious();
+        }
+        else {
+            expDisplayMode = false;
+            switcher.showNext();
+            songList = new ArrayList<SongID>(originalSongList);
         }
         redefineListAdapter();
         //BuildSongList(ListSearchMode.None, new String());
@@ -576,7 +591,8 @@ public class SongbookLayout extends Fragment implements
   	        listView.setOnItemLongClickListener( new AdapterView.OnItemLongClickListener() {
   	    	@Override
   	    	public boolean onItemLongClick(AdapterView<?> av, View v, int pos, long id) {
-  	    		onLongListItemClick(v,pos,id);
+  	    		//onLongListItemClick(v,pos,id);
+                onLongListItemClick(v, listAdapter.getItem(pos));
   	    		return true;
   	        	}
 
@@ -672,8 +688,9 @@ public class SongbookLayout extends Fragment implements
         multiSelectMode = false;
     }
 
-    private static void onLongListItemClick(View v, int position,long id) {
-		selectedSong = new SongID(songList.get(position).getID(), songList.get(position).getName(), songList.get(position).getSinger());
+    private static void onLongListItemClick(View v, SongID song) {
+        selectedSong = song;
+		//selectedSong = new SongID(songList.get(position).getID(), songList.get(position).getName(), songList.get(position).getSinger());
   		// send it to the Favorite list
   		// Toast.makeText(v.getContext(),"onLongListItemClick", Toast.LENGTH_SHORT).show();
 		mQuickAction.show(v);
@@ -818,12 +835,14 @@ public class SongbookLayout extends Fragment implements
 		inflater.inflate(R.menu.song_view, menu);
 
      }
-	
+
+    MenuItem optionMenuItem;
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-        final MenuItem i = item;
+        optionMenuItem = item;
 
-		switch(i.getItemId()) {
+		switch(optionMenuItem.getItemId()) {
             /*
             case R.id.rmt_sound:
             case R.id.rmt_ff:
@@ -848,11 +867,11 @@ public class SongbookLayout extends Fragment implements
                 break;
             */
 			case R.id.song_sort:
-                performSort(R.id.song_sort, i);
+                performSort(R.id.song_sort, optionMenuItem);
 				break;
 		    	
 		    case R.id.singer_sort:
-                performSort(R.id.singer_sort, i);
+                performSort(R.id.singer_sort, optionMenuItem);
 		    	break;
 		    		
 		    case R.id.search:
@@ -866,6 +885,7 @@ public class SongbookLayout extends Fragment implements
                     songList = new ArrayList<SongID>(originalSongList);
                     redefineListAdapter();
                 }
+                ((SongbookMgrActivity) getActivity()).registerBackkeyPress(myTag);
                 item.setActionView(R.layout.search_param);
                 final AutoCompleteTextView txtSearch = (AutoCompleteTextView) item.getActionView().findViewById(R.id.search_edit_text);
                 //txtSearch.setAdapter(listAdapter);
@@ -895,15 +915,15 @@ public class SongbookLayout extends Fragment implements
                 txtSearch.setTextColor(Color.BLACK);
                 txtSearch.requestFocus();
                 // Setting an action listener
-                txtSearch.setOnEditorActionListener(new OnEditorActionListener(){
+                txtSearch.setOnEditorActionListener(new OnEditorActionListener() {
                     @Override
                     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                         Log.i(TAG, "onEditorAction:");
-                        if ((actionId == EditorInfo.IME_ACTION_SEARCH) || ( event.getAction() == KeyEvent.ACTION_DOWN &&
+                        if ((actionId == EditorInfo.IME_ACTION_SEARCH) || (event.getAction() == KeyEvent.ACTION_DOWN &&
                                 event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
                             ((InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(
                                     txtSearch.getWindowToken(), 0);
-                            i.collapseActionView();
+                            optionMenuItem.collapseActionView();
                             String s = v.getText().toString();
                             StringBuilder searchString = new StringBuilder();
 
@@ -912,8 +932,7 @@ public class SongbookLayout extends Fragment implements
                                 if (s.charAt(i) != ' ') {
                                     searchString.append(s.charAt(i));
                                     seenSpaceBefore = false;
-                                }
-                                else {
+                                } else {
                                     if (!seenSpaceBefore) {
                                         // ignore if there is more than one space chars in a row
                                         seenSpaceBefore = true;
@@ -935,8 +954,10 @@ public class SongbookLayout extends Fragment implements
                     }
 
                 });
+
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+
 		    	break;
             case R.id.multi_select:
                 if (expDisplayMode) {

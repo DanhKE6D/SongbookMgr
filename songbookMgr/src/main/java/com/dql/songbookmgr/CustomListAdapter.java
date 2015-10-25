@@ -39,6 +39,13 @@ public class CustomListAdapter extends ArrayAdapter<SongID> implements Filterabl
         origData = list;
     }
 
+    public SongID getItem(int pos){
+        if (pos < items.size()) {
+            return items.get(pos);
+        }
+        return null;
+    }
+
     @Override
     public int getCount() {
         return items.size();

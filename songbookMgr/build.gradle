@@ -1,12 +1,12 @@
 apply plugin: 'android'
 
 android {
-    compileSdkVersion 19
-    buildToolsVersion "19.1.0"
+    compileSdkVersion 21
+    buildToolsVersion '23.0.2'
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 17
+        targetSdkVersion 21
     }
     lintOptions {
         checkReleaseBuilds false
@@ -35,5 +35,5 @@ dependencies {
     compile project(':quickAction')
     compile project(':songbookDBUtils')
     compile project(':fileChooser')
-    compile 'com.android.support:support-v4:19+'
+    compile 'com.android.support:support-v4:21+'
 }

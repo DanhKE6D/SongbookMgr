@@ -708,7 +708,7 @@ public class SongbookLayout extends Fragment implements
     // otherwise, normal search
     // =========================================================================================
 
-    private void BuildSongList(ListSearchMode mode, String text) {
+    private void buildSongList(ListSearchMode mode, String text) {
     	songList.clear();
     	if (text.isEmpty() || (mode == ListSearchMode.None)) {
             // Collections.copy(songList, originalSongList);
@@ -881,10 +881,10 @@ public class SongbookLayout extends Fragment implements
                     // was in expanded display mode
                     expDisplayMode = false;
                     switcher.showNext();
-                    // 20141025: dql - want to start search with full list of songs
-                    songList = new ArrayList<SongID>(originalSongList);
-                    redefineListAdapter();
                 }
+                // 20141025: dql - want to start search with full list of songs
+                songList = new ArrayList<SongID>(originalSongList);
+                redefineListAdapter();
                 ((SongbookMgrActivity) getActivity()).registerBackkeyPress(myTag);
                 item.setActionView(R.layout.search_param);
                 final AutoCompleteTextView txtSearch = (AutoCompleteTextView) item.getActionView().findViewById(R.id.search_edit_text);
@@ -944,7 +944,7 @@ public class SongbookLayout extends Fragment implements
                                 }
                             }
                             //Log.i(TAG, "search text = " + searchString.toString());
-                            BuildSongList(ListSearchMode.Songs, searchString.toString());
+                            buildSongList(ListSearchMode.Songs, searchString.toString());
                             listAdapter.notifyDataSetChanged();
                             return true;
                         }
